@@ -53,45 +53,46 @@ function getNumericValue(formattedValue) {
 }
 
 function calculate() {
-    const amount = document.getElementById('amount').value;
-    const numericAmount = getNumericValue(amount);
-    
-    if (isNaN(numericAmount) || numericAmount <= 0) {
-        alert('لطفا مبلغ سرمایه را به درستی وارد کنید');
+    const amount = getNumericValue(document.getElementById('amount').value);
+    if (!amount || isNaN(amount)) {
+        alert('لطفاً مبلغ سرمایه‌گذاری را وارد کنید');
         return;
     }
 
-    const annualInterestRate = 0.37; // 37%
-    const quarterlyInterestRate = annualInterestRate / 4;
-    const totalInterest = numericAmount * annualInterestRate;
-    const totalPayment = numericAmount + totalInterest;
-    const quarterlyPayment = totalPayment / 4;
+    const annualInterest = 0.37; // 37% سود سالیانه
+    const quarterlyInterest = annualInterest / 4; // سود سه‌ماهه
+    const totalInterest = amount * annualInterest; // کل سود یک سال
+    const quarterlyPayment = amount * quarterlyInterest; // مبلغ سود هر سه ماه
 
     // نمایش خلاصه اطلاعات
-    document.getElementById('investment-amount').textContent = formatNumber(numericAmount);
+    document.getElementById('investment-amount').textContent = formatNumber(amount);
     document.getElementById('total-interest').textContent = formatNumber(totalInterest);
-    document.getElementById('total-payment').textContent = formatNumber(totalPayment);
+    document.getElementById('total-payment').textContent = formatNumber(amount + totalInterest);
 
     // ایجاد جدول اقساط
     const installments = [
-        { period: 'سه ماه اول', amount: quarterlyPayment },
-        { period: 'سه ماه دوم', amount: quarterlyPayment },
-        { period: 'سه ماه سوم', amount: quarterlyPayment },
-        { period: 'سه ماه چهارم', amount: quarterlyPayment }
+        { period: 'پایان سه‌ماه اول', amount: quarterlyPayment },
+        { period: 'پایان سه‌ماه دوم', amount: quarterlyPayment },
+        { period: 'پایان سه‌ماه سوم', amount: quarterlyPayment },
+        { period: 'پایان سه‌ماه چهارم', amount: quarterlyPayment + amount } // اضافه کردن اصل سرمایه به قسط آخر
     ];
 
     const tbody = document.getElementById('installments');
     tbody.innerHTML = '';
+    let totalPayment = 0;
 
     installments.forEach((installment, index) => {
         const row = document.createElement('tr');
+        totalPayment += installment.amount;
+        
         row.innerHTML = `
-            <td>${convertToPersianNumbers((index + 1).toString())}</td>
+            <td>${convertToPersianNumbers(index + 1)}</td>
             <td>${installment.period}</td>
             <td>${formatNumber(installment.amount)}</td>
         `;
         tbody.appendChild(row);
     });
 
+    // نمایش نتایج
     document.getElementById('results').style.display = 'block';
 } 
