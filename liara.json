@@ -1,6 +1,6 @@
 {
   "platform": "docker",
   "port": 80,
-  "app": "calculator",
+  "app": "sadr-calculator",
   "team": "default"
 } 
