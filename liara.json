@@ -1,0 +1,6 @@
+{
+  "platform": "docker",
+  "port": 80,
+  "app": "calculator",
+  "team": "default"
+} 

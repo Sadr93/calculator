@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاسبه‌گر سود علی‌الحساب</title>
+    <link rel="stylesheet" href="assets/fonts/vazirmatn.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>محاسبه‌گر سود علی‌الحساب</h1>
+        <div class="calculator">
+            <div class="info-box">
+                <p>💡 سود سالیانه: ۳۷%</p>
+                <p>💡 دوره پرداخت: هر سه ماه یکبار</p>
+                <p>💡 تعداد اقساط: ۴ قسط</p>
+                <p>💡 پرداخت اصل سرمایه با قسط آخر</p>
+            </div>
+            <div class="input-group">
+                <label for="amount">مبلغ سرمایه (تومان):</label>
+                <input type="text" id="amount" placeholder="مبلغ را وارد کنید" oninput="formatInput(this)">
+            </div>
+            <button onclick="calculate()">محاسبه</button>
+            <div class="results" id="results">
+                <div class="summary-box">
+                    <div class="summary-item">
+                        <span class="summary-label">مبلغ سرمایه‌گذاری:</span>
+                        <span class="summary-value" id="investment-amount"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">مجموع سود سرمایه‌گذاری:</span>
+                        <span class="summary-value" id="total-interest"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">مجموع کل پرداختی‌ها:</span>
+                        <span class="summary-value" id="total-payment"></span>
+                    </div>
+                </div>
+                <h2 class="table-title">جدول پرداخت‌ها</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>قسط</th>
+                            <th>زمان پرداخت</th>
+                            <th>مبلغ قسط (تومان)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="installments">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
