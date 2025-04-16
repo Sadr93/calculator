@@ -12,13 +12,13 @@
         <h1>محاسبه‌گر سود علی‌الحساب</h1>
         <div class="calculator">
             <div class="info-box">
-                <p>💡 سود سالیانه: ۳۷%</p>
-                <p>💡 دوره پرداخت: هر سه ماه یکبار</p>
-                <p>💡 تعداد اقساط: ۴ قسط</p>
-                <p>💡 پرداخت اصل سرمایه با قسط آخر</p>
+                <p>💰 سود سالیانه: ۳۷%</p>
+                <p>📅 دوره پرداخت: هر سه ماه یکبار</p>
+                <p>📊 تعداد اقساط: ۴ قسط</p>
+                <p>💵 پرداخت اصل سرمایه با قسط آخر</p>
             </div>
             <div class="input-group">
-                <label for="amount">مبلغ سرمایه (تومان):</label>
+                <label for="amount">مبلغ سرمایه‌گذاری (تومان):</label>
                 <input type="text" id="amount" placeholder="مبلغ را وارد کنید" oninput="formatInput(this)">
             </div>
             <button onclick="calculate()">محاسبه</button>
@@ -33,11 +33,11 @@
                         <span class="summary-value" id="total-interest"></span>
                     </div>
                     <div class="summary-item">
-                        <span class="summary-label">مجموع کل پرداختی‌ها:</span>
+                        <span class="summary-label">اصل و سود سرمایه‌گذاری:</span>
                         <span class="summary-value" id="total-payment"></span>
                     </div>
                 </div>
-                <h2 class="table-title">جدول پرداخت‌ها</h2>
+                <h2 class="table-title">برنامه واریز اصل و سود سرمایه‌گذاری</h2>
                 <table>
                     <thead>
                         <tr>
