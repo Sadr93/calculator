@@ -2,8 +2,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// سرو کردن فایل‌های استاتیک
+// سرو کردن فایل‌های استاتیک از پوشه‌های مختلف
 app.use(express.static(path.join(__dirname)));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // روت اصلی
 app.get('/', (req, res) => {
