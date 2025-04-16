@@ -59,6 +59,7 @@ function calculate() {
         return;
     }
 
+    // محاسبه سود و اقساط
     const annualInterest = 0.37; // 37% سود سالیانه
     const quarterlyInterest = annualInterest / 4; // سود سه‌ماهه
     const totalInterest = amount * annualInterest; // کل سود یک سال
