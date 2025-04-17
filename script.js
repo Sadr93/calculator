@@ -1,12 +1,15 @@
 function formatNumber(number) {
+    if (!number) return '';
     return new Intl.NumberFormat('fa-IR').format(Math.round(number));
 }
 
 function convertToPersianNumbers(text) {
+    if (!text) return '';
+    
     const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     
-    let result = text;
+    let result = text.toString();
     for (let i = 0; i < 10; i++) {
         result = result.replace(new RegExp(englishNumbers[i], 'g'), persianNumbers[i]);
     }
@@ -37,6 +40,8 @@ function formatInput(input) {
 }
 
 function getNumericValue(formattedValue) {
+    if (!formattedValue) return 0;
+    
     // تبدیل اعداد فارسی به انگلیسی
     const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -55,6 +60,8 @@ function getNumericValue(formattedValue) {
 function calculate() {
     // دریافت و اعتبارسنجی مبلغ سرمایه‌گذاری
     const amount = getNumericValue(document.getElementById('amount').value);
+    console.log('مبلغ وارد شده:', amount);
+    
     if (!amount || isNaN(amount)) {
         alert('لطفاً مبلغ سرمایه‌گذاری را وارد کنید');
         return;
@@ -65,6 +72,8 @@ function calculate() {
     const quarterlyInterest = annualInterest / 4; // سود سه‌ماهه
     const totalInterest = amount * annualInterest; // کل سود یک سال
     const quarterlyPayment = amount * quarterlyInterest; // مبلغ سود هر سه ماه
+
+    console.log('سود سه‌ماهه:', quarterlyPayment);
 
     // نمایش خلاصه اطلاعات
     document.getElementById('investment-amount').textContent = formatNumber(amount);
@@ -79,7 +88,10 @@ function calculate() {
         { period: 'پایان سه‌ماه چهارم', amount: quarterlyPayment + amount } // اضافه کردن اصل سرمایه به قسط آخر
     ];
 
+    console.log('اقساط:', installments);
+
     const tbody = document.getElementById('installments');
+    console.log('tbody:', tbody);
     tbody.innerHTML = '';
     let totalPayment = 0;
 
