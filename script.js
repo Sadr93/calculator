@@ -53,6 +53,7 @@ function getNumericValue(formattedValue) {
 }
 
 function calculate() {
+    // دریافت و اعتبارسنجی مبلغ سرمایه‌گذاری
     const amount = getNumericValue(document.getElementById('amount').value);
     if (!amount || isNaN(amount)) {
         alert('لطفاً مبلغ سرمایه‌گذاری را وارد کنید');
