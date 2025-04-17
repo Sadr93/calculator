@@ -49,7 +49,7 @@ function getNumericValue(formattedValue) {
     }
     
     // حذف همه کاراکترهای غیر عددی و تبدیل به عدد
-    return parseInt(value.replace(/\D/g, ''));
+    return Number(value.replace(/\D/g, ''));
 }
 
 function calculate() {
